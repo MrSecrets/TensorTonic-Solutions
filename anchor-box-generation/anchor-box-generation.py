@@ -13,7 +13,6 @@ def generate_anchors(feature_size, image_size, scales, aspect_ratios):
             for scale in scales:
                 for ratio in aspect_ratios:
                     sqrt_r = math.sqrt(ratio)
-            # scale = scale*stride
                     w = (scale * sqrt_r) /2
                     h = (scale / sqrt_r) /2
                     anchor = [cx-w, cy-h, cx+w, cy+h]
