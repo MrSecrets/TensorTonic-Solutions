@@ -11,14 +11,24 @@ def conv2d(x, W, b):
     H_out, W_out = xH-KH+1, xW-KW+1
 
     out = np.zeros((N,C_out, H_out, W_out))
-    for n in range(N):
-        for c_out in range(C_out):
-            for i in range(H_out):
-                for j in range(W_out):
-                    patch = x[n, :, i:i+KH, j:j+KW]
-                    patch = patch*W[c_out]
-                    # patch = patch
-                    out[n, c_out, i, j] = np.sum(patch)+b[c_out]
+    # for n in range(N):
+    #     for c_out in range(C_out):
+    #         for i in range(H_out):
+    #             for j in range(W_out):
+    #                 patch = x[n, :, i:i+KH, j:j+KW]
+    #                 patch = patch*W[c_out]
+    #                 # patch = patch
+    #                 out[n, c_out, i, j] = np.sum(patch)+b[c_out]
+
+    # return out
+
+    for c_out in range(C_out):
+        for i in range(H_out):
+            for j in range(W_out):
+                patch = x[:, :, i:i+KH, j:j+KW]
+                patch = patch*W[c_out]
+                # patch = patch
+                out[:, c_out, i, j] = np.sum(patch, axis=(1, 2, 3))+b[c_out]
 
     return out
 
