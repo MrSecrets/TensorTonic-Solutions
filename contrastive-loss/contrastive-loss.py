@@ -17,6 +17,10 @@ def contrastive_loss(a, b, y, margin=1.0, reduction="mean") -> float:
         d = np.linalg.norm(a-b, axis=1)
     l = y*d**2 + (1-y)*np.maximum(0, margin-d)**2
     
+    # d2 = np.sum((a-b)**2, axis=1)
+    # d = np.sqrt(d2)
+    # l = y*d2 + (1-y)*np.maximum(0, margin-d)**2
+    
     if reduction == "mean":
         return np.mean(l)
     else:
