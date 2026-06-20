@@ -7,11 +7,7 @@ def rank_transform(values):
         curr = counter.get(v, 0)
         counter[v] = curr+1
 
-    counter_list = []
-    for key, value in counter.items():
-        elem = (key, value)
-        counter_list.append(elem)
-    counter_list.sort()
+    counter_list = sorted(counter.items())
 
     i=0
     for (key, value) in counter_list:
