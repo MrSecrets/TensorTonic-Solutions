@@ -4,10 +4,10 @@ def remove_stopwords(tokens: list, stopwords: list) -> list:
     """
     # Write code here
     stop = set(stopwords)
-    output = []
-    for token in tokens:
-        if token not in stop:
-            output.append(token)
+    # output = []
+    # for token in tokens:
+    #     if token not in stop:
+    #         output.append(token)
 
-    return output
+    return [token for token in tokens if token  not in stop]
     
